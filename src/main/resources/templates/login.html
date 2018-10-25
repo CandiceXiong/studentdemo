@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div class="login_box">
+    <div class="login_l_img"><img src="../images/login-img.png" height="440" width="500"/></div>
+    <div class="login">
+        <div class="login_logo"><a href="#"><img src="../images/login_logo.png" height="60" width="60"/></a></div>
+        <div class="login_name">
+            <p>后台管理系统</p>
+        </div>
+        <form name="form" th:action="@{/front/dologin}" accept-charset="utf-8" method="post">
+            <div class="form-group">
+                <input type="text" class="text" id="username"
+                       placeholder="用户名" name="username" required tabindex="1">
+            </div>
+            <div class="form-group">
+                <input type="password"
+                       class="text" id="password" placeholder="密码" required name="password"
+                       tabindex="2"><br>
+            </div>
+            <br>
+            <div>
+                <span>没有添加账号？去<a href="/front/register">注册</a></span>
+                <input type="submit" id="login" value="Login" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

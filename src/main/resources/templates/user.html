@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript">
+
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Custom CSS 自定义-->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-responsive.css">
+    <!-- font-awesome icons 图标-->
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/morris.css">
+    <!-- calendar 日历 -->
+    <link rel="stylesheet" href="../css/monthly.css">
+    <script src="../js/jquery2.0.3.min.js"></script>
+    <script src="../js/raphael-min.js"></script>
+    <script src="../js/morris.js"></script>
+</head>
+<body>
+<section id="container">
+    <!--header start-->
+    <header class="header fixed-top clearfix">
+        <!--logo start-->
+        <div class="brand">
+            <a href="user.html" class="logo">
+                管 理 员
+            </a>
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars"></div>
+            </div>
+        </div>
+        <!--logo end-->
+        <div class="top-nav clearfix">
+            <!--search & user info start-->
+            <ul class="nav pull-right top-menu">
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="  " src="../images/1.png">
+                        <span class="username">admin</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <li><a href="#"><i class=" fa fa-suitcase"></i>用户资料</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i> 设置</a></li>
+                        <li><a href="login.html"><i class="fa fa-key"></i> 退出</a></li>
+                    </ul>
+                </li>
+                <!-- user login dropdown end -->
+            </ul>
+            <!--search & user info end-->
+        </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start 菜单-->
+    <aside>
+        <div id="sidebar" class="nav-collapse">
+            <!-- sidebar menu start-->
+            <div class="leftside-navigation">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>用户管理</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="/front/updateuser" th:href="@{/adduser}">查看用户</a></li>
+                            <li><a href="/front/adduser" th:href="@{/front/adduser}">编辑用户</a></li>
+                            <li><a href="/front/updateuser" th:href="@{/adduser}">修改用户</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a class="active" href="javascript:;">
+                            <i class="fa fa-th"></i>
+                            <span>权限管理</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="active" href="basic_table.html">查看权限</a></li>
+                            <li><a href="responsive_table.html">权限设置</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="table-agile-info">
+                <div class="panel panel-default">
+                    <div class="row w3-res-tb">
+                        <div class="col-sm-5 m-b-xs">
+
+                            <select class="input-sm form-control w-sm inline v-middle">
+                                <option value="0">搜索</option>
+                                <option value="1">姓名</option>
+                                <option value="2">电话</option>
+                                <option value="3">编号</option>
+                            </select>
+                            <button class="btn btn-sm btn-default">搜索</button>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="input-sm form-control" placeholder="Search">
+                                <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button">Go!</button>
+          </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+                            <thead>
+                            <tr>
+                                <th data-breakpoints="xs">用户编号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>生日</th>
+                                <th>状态</th>
+                                <th>邮箱</th>
+                                <th>用户电话</th>
+                                <th data-breakpoints="xs">地址</th>
+                                <th data-breakpoints="xs sm md" data-title="DOB">操作</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-expanded="true">
+                                <td>1</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>张小明</td>
+                                <td>男</td>
+                                <td>23</td>
+                                <td>1995-09-08</td>
+                                <td>已使用</td>
+                                <td>1213234243@qq.com</td>
+                                <td>123678178</td>
+                                <td>浦东新区</td>
+                                <td>修改</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-7 text-right text-center-xs">
+                                <ul class="pagination pagination-sm m-t-none m-b-none">
+                                    <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+                                    <li><a href="">1</a></li>
+                                    <li><a href="">2</a></li>
+                                    <li><a href="">3</a></li>
+                                    <li><a href="">4</a></li>
+                                    <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="wthree-copyright">
+                <p>Copyright &copy; 2018.Company name All rights reserved</p>
+            </div>
+        </div>
+        <!-- / footer -->
+    </section>
+    <!--main content end-->
+</section>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/jquery.slimscroll.js"></script>
+<script src="../js/jquery.nicescroll.js"></script>
+<!--[if lte IE 8]>
+<script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="../js/jquery.scrollTo.js"></script>
+</body>
+</html>
